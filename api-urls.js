@@ -50,6 +50,12 @@ function apiUrls( options ) {
                         lightOff() {
                             return `${this}/floodlight_light_off`
                         },
+                        sirenOn() {
+                            return `${this}/siren_on`
+                        },
+                        sirenOff() {
+                            return `${this}/siren_off`
+                        },
                         liveStream() {
                             return `${this}/vod`
                         },

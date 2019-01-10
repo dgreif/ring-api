@@ -64,12 +64,18 @@ function getDevicesList( restClient, apiUrls, getLiveStream ) {
         }
     }
 
-    const lightable = Base => class extends Base {
+    const securityCamera = Base => class extends Base {
         lightOn() {
             return restClient.authenticatedRequest( 'PUT', this.apiUri.lightOn())
         }
         lightOff() {
             return restClient.authenticatedRequest( 'PUT', this.apiUri.lightOff())
+        }
+        sirenOn() {
+            return restClient.authenticatedRequest( 'PUT', this.apiUri.sirenOn())
+        }
+        sirenOff() {
+            return restClient.authenticatedRequest( 'PUT', this.apiUri.sirenOff())
         }
     }
 
@@ -80,7 +86,7 @@ function getDevicesList( restClient, apiUrls, getLiveStream ) {
     }
 
     const Doorbell = streamable( Device )
-    const Camera = streamable( lightable( Device ))
+    const Camera = streamable( securityCamera( Device ))
 
     const types = {
         doorbells: Doorbell,
